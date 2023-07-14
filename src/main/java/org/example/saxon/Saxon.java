@@ -4,35 +4,31 @@ import org.example.soldier.Soldier;
 
 public class Saxon extends Soldier {
 
-    int health;
-
-    int strength;
-
     String msg;
 
     public Saxon(int health, int strength) {
         super(health, strength);
-        this.health = health;
-        this.strength = strength;
     }
 
-    public int attack(int damage) {
-        return this.strength;
+    public int attack() {
+        return super.attack();
     }
 
     public void receiveDamage(int damage) {
-        this.health -= damage;
-        if(this.health >0){
-            this.msg = "A Saxon has received " + damage + " points of damage";
+        super.receiveDamage(damage);
+        if (this.health <= 0) {
+            this.setMsg("A Saxon has died in act of combat");
         } else {
-            this.msg = "A Saxon has died in combat";
+            this.setMsg("A Saxon has received " + damage + " points of damage");
         }
     }
 
-    public String getMsg(){
-        return this.msg;
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
 }
-
-

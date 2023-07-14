@@ -10,8 +10,6 @@ class SaxonTest {
     int health = 60;
     int strength = 25;
 
-    int damage;
-
     @Test
         public void should_inherit_from_Soldier() {
         Saxon saxon = new Saxon(health, strength);
@@ -39,15 +37,14 @@ class SaxonTest {
     @Test
         public void attack_should_return_strength_property_of_the_Saxon() {
         Saxon saxon = new Saxon(health, strength);
-        var resultAttack = saxon.attack(damage);
+        var resultAttack = saxon.attack();
         assertEquals(saxon.strength, resultAttack);
      }
 
     @Test
         public void attack_should_receive_0_arguments() {
         Saxon saxon = new Saxon(health, strength);
-        int damage = 50;
-        int resultAttack = saxon.attack(damage);
+        int resultAttack = saxon.attack();
         assertEquals(this.strength, resultAttack);
 }
 
@@ -76,6 +73,6 @@ class SaxonTest {
         public void should_return_A_Saxon_has_died_in_combat_if_the_Saxon_dies() {
         Saxon saxon = new Saxon(health, strength);
         saxon.receiveDamage(health);
-        assertEquals("A Saxon has died in combat", saxon.getMsg());
+        assertEquals("A Saxon has died in act of combat", saxon.getMsg());
     }
 }
